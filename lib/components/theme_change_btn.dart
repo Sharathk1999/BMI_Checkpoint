@@ -15,7 +15,7 @@ class ThemeChangeBtn extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
             border: Border.all(
-              width: 2,
+              width: 5,
               color: Colors.blueGrey,
             ),
             borderRadius: const BorderRadius.only(

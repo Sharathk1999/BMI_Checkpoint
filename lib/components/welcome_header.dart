@@ -11,7 +11,7 @@ class WelcomeHeader extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
-        border: Border.all(width: 1),
+        border: Border.all(width: 2,color: Colors.blueGrey),
         borderRadius: const BorderRadius.only(
           topRight: Radius.circular(16),
           bottomLeft: Radius.circular(16),
