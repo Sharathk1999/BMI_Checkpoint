@@ -1,5 +1,5 @@
 import 'package:bmi_checkpoint/config/theme.dart';
-import 'package:bmi_checkpoint/screens/home_screen.dart';
+import 'package:bmi_checkpoint/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'BMI Checkpoint',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
