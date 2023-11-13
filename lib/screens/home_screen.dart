@@ -4,24 +4,19 @@ import 'package:bmi_checkpoint/components/primary_custom_btn.dart';
 import 'package:bmi_checkpoint/components/theme_change_btn.dart';
 import 'package:bmi_checkpoint/components/weight_selector.dart';
 import 'package:bmi_checkpoint/components/welcome_header.dart';
-import 'package:bmi_checkpoint/config/colors.dart';
+import 'package:bmi_checkpoint/controllers/bmi_controller.dart';
+import 'package:bmi_checkpoint/screens/results_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // ThemeController themeController = Get.put(ThemeController());
+    BMIController bmiController = Get.put(BMIController());
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: lightBgColor,
-        title: const Text(
-          'BMI Checkpoint',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -41,7 +36,9 @@ class HomeScreen extends StatelessWidget {
                   PrimaryCustomBtn(
                     icon: Icons.male_rounded,
                     primaryCustomBtnName: 'Male',
-                    onPressed: () {},
+                    onPressed: () {
+                      bmiController.genderChangeHandler('Male');
+                    },
                   ),
                   const SizedBox(
                     width: 10,
@@ -49,7 +46,9 @@ class HomeScreen extends StatelessWidget {
                   PrimaryCustomBtn(
                     icon: Icons.female_rounded,
                     primaryCustomBtnName: 'Female',
-                    onPressed: () {},
+                    onPressed: () {
+                      bmiController.genderChangeHandler('Female');
+                    },
                   )
                 ],
               ),
@@ -60,22 +59,20 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const HeightSelector(),
-                    const SizedBox(
+                     HeightSelector(),
+                     SizedBox(
                       width: 20,
                     ),
                     Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            WeightSelector(),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            AgeSelector()
-                          ],
-                        ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          WeightSelector(),
+                           SizedBox(
+                            height: 25,
+                          ),
+                          AgeSelector()
+                        ],
                       ),
                     )
                   ],
@@ -89,7 +86,11 @@ class HomeScreen extends StatelessWidget {
                 child: PrimaryCustomBtn(
                   icon: Icons.send_rounded,
                   primaryCustomBtnName: 'Continue',
-                  onPressed: () {},
+                  onPressed: () {
+                    bmiController.calculateBMI();
+                    
+                    Get.to(const ResultScreen(),transition: Transition.rightToLeft);
+                  },
                 ),
               )
             ],

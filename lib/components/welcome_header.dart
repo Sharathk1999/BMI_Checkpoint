@@ -21,7 +21,7 @@ class WelcomeHeader extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [
+            children: [ 
               Text(
                 'Welcome to BMI Checkpoint🤗',
                 style: TextStyle(
